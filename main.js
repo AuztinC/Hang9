@@ -11,7 +11,7 @@ async function getNewWord(){
     let something = new XMLHttpRequest();
     something.open("GET", "https://random-word-api.vercel.app/api?words=1&length=9");
 
-    
+
     something.onload = function(){
         ranWord = something.responseText.slice(2, something.response.length - 2);
         // console.log(ranWord);
@@ -19,7 +19,7 @@ async function getNewWord(){
     something.send();
 }
 // getNewWord(function(w){console.log(w)})
-getNewWord() 
+getNewWord()
 
 function setWord(rWord) {
     for (i = 0; i < inputBlock.length; i++) {
@@ -33,8 +33,8 @@ let inputBlock = Array.from(document.querySelectorAll('.inputBlock'));
 // let container = document.getElementById('container');
 // let keyRow = document.getElementsByClassName('keyRow');
 let keyBlock = document.getElementsByClassName('keyBlock');
- let keyRow = $('.keyRow');
- 
+let keyRow = $('.keyRow');
+
 let isKey = false;
 function letterCheck(key) { // PRESS ANY KEY
 
@@ -42,13 +42,13 @@ function letterCheck(key) { // PRESS ANY KEY
     // console.log(key.offsetTop)
     key.className = "inactiveKey";
     key.disabled = true;
-    
+
     for (i = 0; i < inputBlock.length; i++) {
-        if (key.id[3] == ranWord[i].toUpperCase()) {    
+        if (key.id[3] == ranWord[i].toUpperCase()) {
             inputBlock[i].innerHTML = ranWord[i].toUpperCase();
             key.className = "correctKey";
             key.appendChild(starBlock);
-            starBlock.className = "starBlock"; 
+            starBlock.className = "starBlock";
             starBlock.innerHTML += " &bigstar;";
             isKey = true;
         }
@@ -56,7 +56,7 @@ function letterCheck(key) { // PRESS ANY KEY
     if (isKey != true){
         f++;
         gameBoard.style.backgroundImage = bodyParts[f]
-    } 
+    }
     if (f == 9) {
         gameOver();
     }
